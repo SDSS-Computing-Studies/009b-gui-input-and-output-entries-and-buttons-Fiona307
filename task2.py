@@ -12,3 +12,58 @@ The program should display the factored form in an Entry widget.
 Extension: make the + between a,b and b,c buttons that will toggle
 between + and -.
 """
+#!python3
+
+import tkinter as tk
+from tkinter import *
+
+win = tk.Tk()
+win.title("Factoring trinomials")
+
+l1 = tk.Label(win, bg="#FFFF80", text="=====INSTRUCTIONS=====\nEnter the coefficients into the boxes in front of the variable x\npress the \"factor\"button to get the factored form of the trinomial")
+
+l2 = tk.Label(win, text="x^2 +")
+l3 = tk.Label(win, text="x +")
+e1 = tk.Entry(win, width=5)
+e2 = tk.Entry(win, width=5)
+l4 = tk.Label(win, text=" = 0")
+
+output = StringVar()
+str1 = "Output will show up here"
+output.set(str1)
+e3 = tk.Entry(win, width=len(str1), textvariable=output)
+
+def factor():
+    b = e1.get()
+    c = e2.get()
+    b = int(b)
+    c = int(c)
+    if b > 0:
+        for i in range(1,c+1):
+            if i + c/i == b:
+                m = i
+                n = int(c/i)
+        e3.delete(0,END)
+        answer = "(x + " + str(m) + ")(x +" + str(n) + ") = 0"
+        e3.insert(0, answer)
+    if b < 0:
+        for i in range(1,c+1):
+            if i + c/i == -b:
+                m = i
+                n = int(c/i)
+        e3.delete(0,END)
+        answer = "(x - " + str(m) + ")(x -" + str(n) + ") = 0"
+        e3.insert(0, answer)
+
+b1 = tk.Button(win, text="Factor", command=factor)
+
+l1.grid(row=1, columnspan=6)
+l2.grid(row=2, column=1)
+e1.grid(row=2, column=2)
+l3.grid(row=2, column=3)
+e2.grid(row=2, column=4)
+l4.grid(row=2, column=5)
+e3.grid(row=3, columnspan=5)
+b1.grid(row=4, column=5)
+
+win.mainloop()
