@@ -6,3 +6,8 @@ the completed madlib.
 What is a madlib? Visit https://www.madlibs.com/printables/ to see some Madlibs
 you might use in your assignment
 """
+#!python3
+
+import tkinter as tk
+from tkinter import Tk
+
