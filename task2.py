@@ -43,17 +43,14 @@ def factor():
             if i + c/i == b:
                 m = i
                 n = int(c/i)
-        e3.delete(0,END)
-        answer = "(x + " + str(m) + ")(x +" + str(n) + ") = 0"
-        e3.insert(0, answer)
+        output.set("(x + " + str(m) + ")(x +" + str(n) + ") = 0")
+        
     if b < 0:
         for i in range(1,c+1):
             if i + c/i == -b:
                 m = i
                 n = int(c/i)
-        e3.delete(0,END)
-        answer = "(x - " + str(m) + ")(x -" + str(n) + ") = 0"
-        e3.insert(0, answer)
+        output.set("(x - " + str(m) + ")(x -" + str(n) + ") = 0")
 
 b1 = tk.Button(win, text="Factor", command=factor)
 
